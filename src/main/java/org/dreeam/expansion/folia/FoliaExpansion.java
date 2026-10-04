@@ -74,7 +74,7 @@ public class FoliaExpansion extends PlaceholderExpansion implements Cacheable, C
 
     @Override
     public @NotNull String getVersion() {
-        return "1.0.0";
+        return "1.1.0";
     }
 
     @Override
@@ -106,7 +106,7 @@ public class FoliaExpansion extends PlaceholderExpansion implements Cacheable, C
 
         if (!foliaUtils.isFolia) return null;
 
-        if (p == null | !p.isOnline()) return "";
+        if (p == null || !p.isOnline()) return "";
         Player player = p.getPlayer();
         if (player == null) return "";
 

@@ -1,10 +1,10 @@
 plugins {
     `java-library`
-    id("io.papermc.paperweight.userdev") version "1.5.11"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.24"
 }
 
 group = "org.dreeam.expansion.folia"
-version = "1.0.0"
+version = "1.1.0"
 description = "PlaceholderAPI expansion for Folia"
 
 repositories {
@@ -22,12 +22,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.5") {
         exclude(group = "org.bstats")
     }
 
-    paperweight.foliaDevBundle("1.19.4-R0.1-SNAPSHOT")
+    paperweight.foliaDevBundle("1.21.11-R0.1-SNAPSHOT")
 }
 
 tasks.withType<JavaCompile> {
@@ -35,6 +34,7 @@ tasks.withType<JavaCompile> {
 }
 
 configure<JavaPluginExtension> {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
+
+paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION

@@ -2,10 +2,10 @@ package org.dreeam.expansion.folia;
 
 import io.papermc.paper.threadedregions.RegionizedServer;
 import io.papermc.paper.threadedregions.ThreadedRegionizer;
-import io.papermc.paper.threadedregions.TickData;
+import ca.spottedleaf.moonrise.common.time.TickData;
 import io.papermc.paper.threadedregions.TickRegionScheduler;
 import io.papermc.paper.threadedregions.TickRegions;
-import net.minecraft.world.level.Level;
+import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -50,7 +50,7 @@ public class FoliaUtils {
     public double getGlobalUtil() {
         final List<ThreadedRegionizer.ThreadedRegion<TickRegions.TickRegionData, TickRegions.TickRegionSectionData>> regions = new ArrayList<>();
         for (final World bukkitWorld : Bukkit.getWorlds()) {
-            ((Level) bukkitWorld).getWorld().getHandle().regioniser.computeForAllRegions(regions::add);
+            ((CraftWorld) bukkitWorld).getHandle().regioniser.computeForAllRegions(regions::add);
         }
         double totalUtil = 0.0;
         final long now = System.nanoTime();
